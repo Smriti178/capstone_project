@@ -9,6 +9,7 @@ const DarkCartItem = ({ item, idx }) => {
   const { updateQuantity, removeItem } = useCart();
   const { book, quantity } = item;
   if (!book) return null;
+  const priceINR = Math.round(book.price * 83);
 
   return (
     <div className="rounded-xl bg-[#161b27] border border-white/5 p-4 flex gap-4">
@@ -41,7 +42,7 @@ const DarkCartItem = ({ item, idx }) => {
           <span className="text-gray-600">,</span>
           <Link to="#" className="text-blue-400 hover:underline">Self Help</Link>
         </div>
-        <p className="text-base font-bold text-white mt-1">₹{book.price}</p>
+        <p className="text-base font-bold text-white mt-1">₹{priceINR}</p>
         <p className="text-xs text-gray-400">
           Delivery by <span className="text-white font-medium">Mon, 25 Jul</span>
         </p>
@@ -217,9 +218,11 @@ const DarkCartCheckoutPage = () => {
     city: "", phone: "", state: "", country: "India",
   });
 
+  const subtotalINR = Math.round(subtotal * 83);
+
   const handlePayNow = () => {
     navigate("/dark/payment", {
-      state: { order: { items, subtotal, deliveryFee: 0, giftDiscount: 100, total: subtotal + Math.round(subtotal * 0.12) - 100 } },
+      state: { order: { items, subtotal: subtotalINR, deliveryFee: 0, giftDiscount: 100, total: subtotalINR + Math.round(subtotalINR * 0.12) - 100 } },
     });
   };
 
@@ -266,7 +269,7 @@ const DarkCartCheckoutPage = () => {
 
           {/* ── Right: grand total ── */}
           <div className="lg:col-span-1">
-            <GrandTotal subtotal={subtotal || 508} onPayNow={handlePayNow} />
+            <GrandTotal subtotal={subtotalINR || 508} onPayNow={handlePayNow} />
           </div>
         </div>
     </DarkPageShell>

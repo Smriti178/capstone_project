@@ -131,6 +131,7 @@ const getDelivery = () => {
  */
 const CatalogueBookCard = ({ book, compact = false }) => {
   const deliveryText = getDelivery();
+  const priceINR = Math.round(book.price * 83);
   const genres = book.genres ?? (book.category ? [book.category] : []);
 
   /* ── Compact variant (Related Reads sidebar) ── */
@@ -149,7 +150,7 @@ const CatalogueBookCard = ({ book, compact = false }) => {
           <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed mt-0.5">{book.description}</p>
           <p className="text-xs text-gray-500 mt-0.5">{book.format ?? "Paperback"}</p>
           <GenreTagList tags={genres.slice(0, 2)} />
-          <p className="text-sm font-bold text-white mt-0.5">₹{book.price}</p>
+          <p className="text-sm font-bold text-white mt-0.5">₹{priceINR}</p>
           <DeliveryBadge text={deliveryText} />
         </div>
       </Link>
@@ -176,7 +177,7 @@ const CatalogueBookCard = ({ book, compact = false }) => {
         <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed">{book.description}</p>
         <p className="text-xs text-gray-500 mt-0.5">{book.format ?? "Paperback"}</p>
         <GenreTagList tags={genres.slice(0, 2)} />
-        <p className="text-sm font-bold text-white mt-0.5">₹{book.price}</p>
+        <p className="text-sm font-bold text-white mt-0.5">₹{priceINR}</p>
         <DeliveryBadge text={deliveryText} />
       </div>
     </div>

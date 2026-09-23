@@ -349,7 +349,7 @@ const OrderDetailPage = () => {
                     +{order.giftPointsEarned} points earned
                   </p>
                   <p className="text-xs text-amber-600">
-                    ≈ ₹{order.giftPointsEarned} redeemable
+                    ≈ ${(order.giftPointsEarned * 0.01).toFixed(2)} redeemable
                   </p>
                 </div>
               </div>

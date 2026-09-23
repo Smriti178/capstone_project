@@ -1,10 +1,10 @@
 /**
- * Format a number as INR currency string.
- * @param {number} amount  — amount in Indian Rupees
- * @returns {string}  e.g. "₹399"
+ * Format a number as USD currency string.
+ * @param {number} amount
+ * @returns {string}  e.g. "$14.99"
  */
 export const formatCurrency = (amount) =>
-  new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(amount);
+  new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(amount);
 
 /**
  * Calculate discount percentage between original and sale price.

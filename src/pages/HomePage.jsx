@@ -13,7 +13,7 @@ const newArrivals = books.filter((b) => b.tags?.includes("new")).slice(0, 8);
 const topRated = [...books].sort((a, b) => b.rating - a.rating).slice(0, 8);
 
 const trustBadges = [
-  { icon: Truck, label: "Free Delivery", sub: "On orders over ₹499" },
+  { icon: Truck, label: "Free Delivery", sub: "On orders over $25" },
   { icon: RotateCcw, label: "Easy Returns", sub: "Within 30 days" },
   { icon: Gift, label: "Gift Points", sub: "Earn on every order" },
   { icon: Headphones, label: "24/7 Support", sub: "We're always here" },
