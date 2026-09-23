@@ -43,6 +43,7 @@ const DarkProductDetailPage = () => {
     setTimeout(() => setAdded(false), 2000);
   };
 
+  const priceINR = Math.round(book.price * 83);
 
   return (
     <DarkPageShell>
@@ -119,7 +120,7 @@ const DarkProductDetailPage = () => {
               </div>
 
               <div>
-                <p className="text-2xl font-bold text-white">₹{book.price}</p>
+                <p className="text-2xl font-bold text-white">₹{priceINR}</p>
                 <p className="text-xs text-gray-400 mt-0.5">
                   Delivery by <span className="text-white font-medium">Mon, 21 Jul</span>
                 </p>

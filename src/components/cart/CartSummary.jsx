@@ -7,8 +7,8 @@ import { formatCurrency } from "../../utils/formatCurrency";
 import Button from "../ui/Button";
 import PriceSummaryRows from "../ui/PriceSummaryRows";
 
-const FREE_DELIVERY_THRESHOLD = 499;
-const DELIVERY_FEE = 49;
+const FREE_DELIVERY_THRESHOLD = 25;
+const DELIVERY_FEE = 3.99;
 
 /**
  * Order summary panel — shows subtotal, delivery, savings, total,

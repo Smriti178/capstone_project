@@ -6,8 +6,8 @@ import { useAuth } from "../../context/AuthContext";
 import CartItem from "./CartItem";
 import { formatCurrency } from "../../utils/formatCurrency";
 
-const FREE_DELIVERY_THRESHOLD = 499;
-const DELIVERY_FEE = 49;
+const FREE_DELIVERY_THRESHOLD = 25;
+const DELIVERY_FEE = 3.99;
 
 /**
  * Slide-in cart drawer — renders over the page from the right side.

@@ -64,9 +64,9 @@ const DarkCataloguePage = () => {
       );
     if (format !== "All")
       r = r.filter((b) => (b.format ?? "Paperback").toLowerCase() === format.toLowerCase());
-    if (priceRange === "Under ₹200")  r = r.filter((b) => b.price < 200);
-    if (priceRange === "₹200–₹400")  r = r.filter((b) => b.price >= 200 && b.price <= 400);
-    if (priceRange === "Above ₹400") r = r.filter((b) => b.price > 400);
+    if (priceRange === "Under ₹200")      r = r.filter((b) => Math.round(b.price * 83) < 200);
+    if (priceRange === "₹200–₹400")      r = r.filter((b) => { const p = Math.round(b.price * 83); return p >= 200 && p <= 400; });
+    if (priceRange === "Above ₹400")     r = r.filter((b) => Math.round(b.price * 83) > 400);
 
     if (sort === "Price: Low to High")   r = [...r].sort((a, b) => a.price - b.price);
     if (sort === "Price: High to Low")   r = [...r].sort((a, b) => b.price - a.price);

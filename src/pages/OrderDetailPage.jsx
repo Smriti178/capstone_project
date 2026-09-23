@@ -8,7 +8,6 @@ import {
 import PageWrapper from "../components/layout/PageWrapper";
 import Breadcrumb from "../components/ui/Breadcrumb";
 import Button from "../components/ui/Button";
-import BookCoverArt from "../components/ui/BookCoverArt";
 import Modal from "../components/ui/Modal";
 import StatusBadge, { STATUS_CONFIG } from "../components/ui/StatusBadge";
 import BookCarousel from "../components/books/BookCarousel";
@@ -211,10 +210,14 @@ const OrderDetailPage = () => {
                   <div key={item.bookId} className="flex gap-3 pt-4 first:pt-0">
                     {/* Cover */}
                     <Link to={`/books/${item.bookId}`} className="shrink-0">
-                      <BookCoverArt
-                        book={item.book ?? {}}
-                        className="w-14 h-20 rounded-lg border border-gray-200"
-                      />
+                      <div className="w-14 h-20 rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
+                        <img
+                          src={item.book?.cover}
+                          alt={item.book?.title}
+                          className="w-full h-full object-cover"
+                          onError={(e) => { e.target.style.display = "none"; }}
+                        />
+                      </div>
                     </Link>
 
                     {/* Info */}
@@ -349,7 +352,7 @@ const OrderDetailPage = () => {
                     +{order.giftPointsEarned} points earned
                   </p>
                   <p className="text-xs text-amber-600">
-                    ≈ ₹{order.giftPointsEarned} redeemable
+                    ≈ ${(order.giftPointsEarned * 0.01).toFixed(2)} redeemable
                   </p>
                 </div>
               </div>

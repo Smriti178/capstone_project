@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Trash2, Minus, Plus } from "lucide-react";
+import { Trash2, Minus, Plus, BookOpen } from "lucide-react";
 import { useCart } from "../../context/CartContext";
 import { formatCurrency } from "../../utils/formatCurrency";
-import BookCoverArt from "../ui/BookCoverArt";
 
 /**
  * A single cart line-item row.
@@ -20,10 +19,24 @@ const CartItem = ({ item, compact = false }) => {
     <div className={`flex gap-3 ${compact ? "py-3" : "py-4"} border-b border-gray-100 last:border-0 min-w-0`}>
       {/* Cover thumbnail */}
       <Link to={`/books/${book.id}`} className="shrink-0">
-        <BookCoverArt
-          book={book}
-          className={`rounded-lg border border-gray-200 ${compact ? "w-12 h-16" : "w-16 sm:w-20 h-24 sm:h-28"}`}
-        />
+        <div className={`overflow-hidden rounded-lg bg-gray-100 border border-gray-200 ${compact ? "w-12 h-16" : "w-16 sm:w-20 h-24 sm:h-28"}`}>
+          <img
+            src={book.cover}
+            alt={book.title}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.target.style.display = "none";
+              e.target.nextSibling.style.display = "flex";
+            }}
+          />
+          {/* Fallback */}
+          <div
+            className="w-full h-full hidden items-center justify-center bg-gradient-to-br from-[#1e3a5f] to-[#2e5490]"
+            style={{ display: "none" }}
+          >
+            <BookOpen size={compact ? 14 : 22} className="text-white/60" />
+          </div>
+        </div>
       </Link>
 
       {/* Details */}

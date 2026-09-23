@@ -8,7 +8,7 @@ import { coverColorAt } from "../data/coverColors";
 /* ── Confirmed book mini-card ────────────────────────── */
 const ConfirmedBookCard = ({ item, idx }) => {
   const book = item.book ?? item;
-  const price = item.priceAtPurchase ?? book?.price ?? 0;
+  const priceINR = Math.round((item.priceAtPurchase ?? book?.price ?? 2) * 83);
 
   return (
     <div className="flex gap-3">
@@ -36,7 +36,7 @@ const ConfirmedBookCard = ({ item, idx }) => {
           <span className="text-gray-600">,</span>
           <span className="text-blue-400">Self Help</span>
         </div>
-        <p className="text-sm font-bold text-white mt-1">₹{price}</p>
+        <p className="text-sm font-bold text-white mt-1">₹{priceINR}</p>
         <p className="text-xs text-gray-400">Delivery by <span className="text-white font-medium">Mon, 21 Jul</span></p>
       </div>
     </div>
@@ -45,8 +45,8 @@ const ConfirmedBookCard = ({ item, idx }) => {
 
 /* ── Mock items for when context has no order ─────────── */
 const MOCK_ITEMS = [
-  { bookId: "m1", quantity: 1, priceAtPurchase: 149, book: { title: "Joy of Minimalism", author: "Daniel Reed", description: "Declutter your life to uncover peace, clarity, and joy.", price: 149 } },
-  { bookId: "m2", quantity: 1, priceAtPurchase: 359, book: { title: "The Path to Success", author: "James Wright", description: "A practical guide to achieving goals with clarity and confidence.", price: 359 } },
+  { bookId: "m1", quantity: 1, priceAtPurchase: 1.80, book: { title: "Joy of Minimalism", author: "Daniel Reed", description: "Declutter your life to uncover peace, clarity, and joy.", price: 1.80 } },
+  { bookId: "m2", quantity: 1, priceAtPurchase: 4.33, book: { title: "The Path to Success", author: "James Wright", description: "A practical guide to achieving goals with clarity and confidence.", price: 4.33 } },
 ];
 
 /* ── Page ─────────────────────────────────────────────── */

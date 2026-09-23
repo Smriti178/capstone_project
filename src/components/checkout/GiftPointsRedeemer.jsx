@@ -4,7 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
 
-const POINTS_TO_RUPEE_RATE = 1; // 1 point = ₹1
+const POINTS_TO_DOLLAR_RATE = 0.01; // 100 points = $1
 
 /**
  * Gift-points redemption widget.
@@ -19,7 +19,7 @@ const GiftPointsRedeemer = ({ redeemedPoints, onRedeem }) => {
   const [appliedPts, setAppliedPts] = useState(0);
 
   const availablePoints = user?.giftPoints ?? 0;
-  const maxDiscount = availablePoints * POINTS_TO_RUPEE_RATE;
+  const maxDiscount = availablePoints * POINTS_TO_DOLLAR_RATE;
 
   const handleApply = () => {
     const pts = parseInt(input, 10);
@@ -34,7 +34,7 @@ const GiftPointsRedeemer = ({ redeemedPoints, onRedeem }) => {
     setError("");
     setApplied(true);
     setAppliedPts(pts);
-    onRedeem(pts, pts * POINTS_TO_RUPEE_RATE);
+    onRedeem(pts, pts * POINTS_TO_DOLLAR_RATE);
   };
 
   const handleRemove = () => {
@@ -65,7 +65,7 @@ const GiftPointsRedeemer = ({ redeemedPoints, onRedeem }) => {
             <Check size={15} className="text-green-600" />
             <span className="text-sm font-medium text-green-700">
               {appliedPts.toLocaleString()} pts applied
-              {" "}(−₹{appliedPts * POINTS_TO_RUPEE_RATE})
+              {" "}(−${(appliedPts * POINTS_TO_DOLLAR_RATE).toFixed(2)})
             </span>
           </div>
           <button
@@ -99,7 +99,7 @@ const GiftPointsRedeemer = ({ redeemedPoints, onRedeem }) => {
       )}
 
       <p className="text-xs text-gray-400">
-        Every 1 point = ₹1 discount. Points are deducted from your balance on order placement.
+        Every 100 points = $1.00 discount. Points are deducted from your balance on order placement.
       </p>
     </div>
   );
