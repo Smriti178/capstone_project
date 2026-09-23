@@ -1,0 +1,33 @@
+export const mockUser = {
+  id: "u001",
+  name: "Alex Johnson",
+  email: "alex@example.com",
+  avatar: null,
+  giftPoints: 340,
+  addresses: [
+    {
+      id: "addr1",
+      label: "Home",
+      name: "Alex Johnson",
+      line1: "123 Maple Street",
+      line2: "Apt 4B",
+      city: "San Francisco",
+      state: "CA",
+      zip: "94102",
+      country: "US",
+      isDefault: true,
+    },
+    {
+      id: "addr2",
+      label: "Work",
+      name: "Alex Johnson",
+      line1: "456 Market Street",
+      line2: "Floor 12",
+      city: "San Francisco",
+      state: "CA",
+      zip: "94105",
+      country: "US",
+      isDefault: false,
+    },
+  ],
+};
