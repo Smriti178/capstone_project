@@ -18,6 +18,7 @@ import {
   XCircle,
 } from "lucide-react";
 import PageWrapper from "../components/layout/PageWrapper";
+import BookCoverArt from "../components/ui/BookCoverArt";
 import Breadcrumb from "../components/ui/Breadcrumb";
 import RelatedBooks from "../components/books/RelatedBooks";
 import StarRating from "../components/ui/StarRating";
@@ -225,28 +226,10 @@ const ProductDetailPage = () => {
           {/* ── Cover ── */}
           <div className="lg:col-span-2 flex justify-center">
             <div className="relative w-full max-w-xs">
-              <div className="overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-lg aspect-[3/4]">
-                <img
-                  src={book.cover}
-                  alt={book.title}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.target.style.display = "none";
-                    e.target.nextSibling.style.display = "flex";
-                  }}
-                />
-                {/* Fallback */}
-                <div
-                  className="absolute inset-0 hidden items-center justify-center bg-gradient-to-br from-[#1e3a5f] to-[#2e5490] text-white px-6 text-center"
-                  style={{ display: "none" }}
-                >
-                  <div>
-                    <BookOpen size={40} className="mx-auto mb-3 opacity-50" />
-                    <p className="font-bold text-lg leading-snug">{book.title}</p>
-                    <p className="text-sm text-white/70 mt-1">{book.author}</p>
-                  </div>
-                </div>
-              </div>
+              <BookCoverArt
+                book={book}
+                className="w-full rounded-2xl border border-gray-200 shadow-lg aspect-[3/4]"
+              />
 
               {/* Discount badge */}
               {discount > 0 && (

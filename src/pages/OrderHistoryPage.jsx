@@ -4,6 +4,7 @@ import { Package, ChevronRight, Search, Filter } from "lucide-react";
 import PageWrapper from "../components/layout/PageWrapper";
 import Breadcrumb from "../components/ui/Breadcrumb";
 import StatusBadge from "../components/ui/StatusBadge";
+import BookCoverArt from "../components/ui/BookCoverArt";
 import RecommendationStrip from "../components/books/RecommendationStrip";
 import { useOrders } from "../context/OrderContext";
 import { formatCurrency } from "../utils/formatCurrency";
@@ -23,20 +24,10 @@ const OrderCard = ({ order }) => {
     >
       {/* Cover thumbnail stack */}
       <div className="relative h-20 w-14 shrink-0">
-        <div className="absolute inset-0 rounded-lg overflow-hidden border border-gray-200 bg-gray-100">
-          {firstBook?.cover ? (
-            <img
-              src={firstBook.cover}
-              alt={firstBook.title}
-              className="w-full h-full object-cover"
-              onError={(e) => { e.target.style.display = "none"; }}
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#1e3a5f] to-[#2e5490]">
-              <Package size={18} className="text-white/60" />
-            </div>
-          )}
-        </div>
+          <BookCoverArt
+            book={firstBook ?? {}}
+            className="absolute inset-0 rounded-lg border border-gray-200"
+          />
         {extraCount > 0 && (
           <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#1e3a5f] text-xs font-bold text-white">
             +{extraCount}
